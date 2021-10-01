@@ -27,7 +27,7 @@ namespace Localiz
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //додавання служб локалізації в контейнер служб.Додавання шляху до ресурсів.
+            //додавання сдужб локалізації в контейнер служб.Додавання шляху до ресурсів.
             services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
             //додавання підтримки файлів локалізованих представлень.В цьому прикладі локалізація зразка представлення базується на 
             //суфіксі файла представлення.
