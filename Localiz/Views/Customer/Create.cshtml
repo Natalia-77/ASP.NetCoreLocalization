@@ -1,0 +1,43 @@
+﻿@model Localiz.Models.CustomersViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="card">
+    <div class="card-header">Create</div>
+    <div class="card-body">
+        <form asp-controller="Customer"
+              asp-action="Create"
+              method="post">
+            <div class="form-row">
+                <div class="col">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name"
+                           class="form-control" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+
+                <div class="col">
+                    <label asp-for="City"></label>
+                    <input asp-for="City" 
+                           class="form-control" />
+                    <span asp-validation-for="City"></span>
+                </div>
+                <div class="col">
+                    <label asp-for="Position"></label>
+                    <input asp-for="Position" 
+                           class="form-control" />
+                    <span asp-validation-for="Position"></span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="form-row">
+                <div class="col">
+                    <button style="margin-top:10px" class="btn btn-success" type="submit">Submit</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
