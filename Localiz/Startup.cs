@@ -27,13 +27,16 @@ namespace Localiz
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //тест
-            //додавання сдужб локалізації в контейнер служб.Додавання шляху до ресурсів.
+            
+            //РґРѕРґР°РІР°РЅРЅСЏ СЃРґСѓР¶Р± Р»РѕРєР°Р»С–Р·Р°С†С–С— РІ РєРѕРЅС‚РµР№РЅРµСЂ СЃР»СѓР¶Р±.Р”РѕРґР°РІР°РЅРЅСЏ С€Р»СЏС…Сѓ РґРѕ СЂРµСЃСѓСЂСЃС–РІ.
             services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
-            //додавання підтримки файлів локалізованих представлень.В цьому прикладі локалізація зразка представлення базується на 
-            //суфіксі файла представлення.
+            //С‚РµСЃС‚
+
+            services.AddSingleton<LocalizationService>();
+            //РґРѕРґР°РІР°РЅРЅСЏ РїС–РґС‚СЂРёРјРєРё С„Р°Р№Р»С–РІ Р»РѕРєР°Р»С–Р·РѕРІР°РЅРёС… РїСЂРµРґСЃС‚Р°РІР»РµРЅСЊ.Р’ С†СЊРѕРјСѓ РїСЂРёРєР»Р°РґС– Р»РѕРєР°Р»С–Р·Р°С†С–СЏ Р·СЂР°Р·РєР° РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅСЏ Р±Р°Р·СѓС”С‚СЊСЃСЏ РЅР° 
+            //СЃСѓС„С–РєСЃС– С„Р°Р№Р»Р° РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅСЏ.
             services.AddMvc().AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
-                //додає підтримку локалізованих повідомлень перевірки DataAnnotationLocalization через абстракції IStringLocalizer.
+                //РґРѕРґР°С” РїС–РґС‚СЂРёРјРєСѓ Р»РѕРєР°Р»С–Р·РѕРІР°РЅРёС… РїРѕРІС–РґРѕРјР»РµРЅСЊ РїРµСЂРµРІС–СЂРєРё DataAnnotationLocalization С‡РµСЂРµР· Р°Р±СЃС‚СЂР°РєС†С–С— IStringLocalizer.
                 .AddDataAnnotationsLocalization(options=> {
                     options.DataAnnotationLocalizerProvider = (type, factory) =>
                     {
@@ -43,13 +46,13 @@ namespace Localiz
                    
                 });
 
-            //Встановлюється об"єкт RequestLocalizationOptions,його об"єкту передається список культур та культура по замовчуванню.
+            //Р’СЃС‚Р°РЅРѕРІР»СЋС”С‚СЊСЃСЏ РѕР±"С”РєС‚ RequestLocalizationOptions,Р№РѕРіРѕ РѕР±"С”РєС‚Сѓ РїРµСЂРµРґР°С”С‚СЊСЃСЏ СЃРїРёСЃРѕРє РєСѓР»СЊС‚СѓСЂ С‚Р° РєСѓР»СЊС‚СѓСЂР° РїРѕ Р·Р°РјРѕРІС‡СѓРІР°РЅРЅСЋ.
             //
             services.Configure<RequestLocalizationOptions>(options =>
             {
-                //додавання змінної для підтримуваних культур.Це масив,який містить всі значення культур.
-                //Проміжне налаштування локалізації повинно здійснюватись перед іншими проміжними налаштуваннями,які можуть
-                //перевіряти мову і регіональні параметри запросу.  
+                //РґРѕРґР°РІР°РЅРЅСЏ Р·РјС–РЅРЅРѕС— РґР»СЏ РїС–РґС‚СЂРёРјСѓРІР°РЅРёС… РєСѓР»СЊС‚СѓСЂ.Р¦Рµ РјР°СЃРёРІ,СЏРєРёР№ РјС–СЃС‚РёС‚СЊ РІСЃС– Р·РЅР°С‡РµРЅРЅСЏ РєСѓР»СЊС‚СѓСЂ.
+                //РџСЂРѕРјС–Р¶РЅРµ РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ Р»РѕРєР°Р»С–Р·Р°С†С–С— РїРѕРІРёРЅРЅРѕ Р·РґС–Р№СЃРЅСЋРІР°С‚РёСЃСЊ РїРµСЂРµРґ С–РЅС€РёРјРё РїСЂРѕРјС–Р¶РЅРёРјРё РЅР°Р»Р°С€С‚СѓРІР°РЅРЅСЏРјРё,СЏРєС– РјРѕР¶СѓС‚СЊ
+                //РїРµСЂРµРІС–СЂСЏС‚Рё РјРѕРІСѓ С– СЂРµРіС–РѕРЅР°Р»СЊРЅС– РїР°СЂР°РјРµС‚СЂРё Р·Р°РїСЂРѕСЃСѓ.  
                 var supportedCultures = new[]
                 {
                     new CultureInfo("en"),
@@ -57,9 +60,9 @@ namespace Localiz
                     new CultureInfo("uk")
 
                 };
-                //SupportedCultures визначає результати функцій,що залежать від мови та регіональних параметрів(форматування дат і часу).
-                //SupportedUICultures визначає те,які строчки перекладів (в файлі .resx)шукає об"єкт ResourceManager.
-                //ResourceManager шукає пов"язані з мовою і регіональними параметрами строчки,які визначаються значенням CurrentUICulture.  
+                //SupportedCultures РІРёР·РЅР°С‡Р°С” СЂРµР·СѓР»СЊС‚Р°С‚Рё С„СѓРЅРєС†С–Р№,С‰Рѕ Р·Р°Р»РµР¶Р°С‚СЊ РІС–Рґ РјРѕРІРё С‚Р° СЂРµРіС–РѕРЅР°Р»СЊРЅРёС… РїР°СЂР°РјРµС‚СЂС–РІ(С„РѕСЂРјР°С‚СѓРІР°РЅРЅСЏ РґР°С‚ С– С‡Р°СЃСѓ).
+                //SupportedUICultures РІРёР·РЅР°С‡Р°С” С‚Рµ,СЏРєС– СЃС‚СЂРѕС‡РєРё РїРµСЂРµРєР»Р°РґС–РІ (РІ С„Р°Р№Р»С– .resx)С€СѓРєР°С” РѕР±"С”РєС‚ ResourceManager.
+                //ResourceManager С€СѓРєР°С” РїРѕРІ"СЏР·Р°РЅС– Р· РјРѕРІРѕСЋ С– СЂРµРіС–РѕРЅР°Р»СЊРЅРёРјРё РїР°СЂР°РјРµС‚СЂР°РјРё СЃС‚СЂРѕС‡РєРё,СЏРєС– РІРёР·РЅР°С‡Р°СЋС‚СЊСЃСЏ Р·РЅР°С‡РµРЅРЅСЏРј CurrentUICulture.  
                 options.DefaultRequestCulture = new RequestCulture("uk");
                 options.SupportedCultures = supportedCultures;
                 options.SupportedUICultures = supportedCultures;
@@ -82,9 +85,9 @@ namespace Localiz
             var requestlocalizationOptions = app.ApplicationServices
                .GetService<IOptions<RequestLocalizationOptions>>();
 
-            //ініціалізує об"єкт RequestLocalizationOptions за допомогою ряду значень.А саме, в RequestLocalizationOptions
-            //встановлюється поточна культура за допомогою властивості DefaultRequestCulture(59 строчка в цьому класі),
-            //а також список підтримуваних культур через властивості SupportedCultures та SupportedUICultures.
+            //С–РЅС–С†С–Р°Р»С–Р·СѓС” РѕР±"С”РєС‚ RequestLocalizationOptions Р·Р° РґРѕРїРѕРјРѕРіРѕСЋ СЂСЏРґСѓ Р·РЅР°С‡РµРЅСЊ.Рђ СЃР°РјРµ, РІ RequestLocalizationOptions
+            //РІСЃС‚Р°РЅРѕРІР»СЋС”С‚СЊСЃСЏ РїРѕС‚РѕС‡РЅР° РєСѓР»СЊС‚СѓСЂР° Р·Р° РґРѕРїРѕРјРѕРіРѕСЋ РІР»Р°СЃС‚РёРІРѕСЃС‚С– DefaultRequestCulture(59 СЃС‚СЂРѕС‡РєР° РІ С†СЊРѕРјСѓ РєР»Р°СЃС–),
+            //Р° С‚Р°РєРѕР¶ СЃРїРёСЃРѕРє РїС–РґС‚СЂРёРјСѓРІР°РЅРёС… РєСѓР»СЊС‚СѓСЂ С‡РµСЂРµР· РІР»Р°СЃС‚РёРІРѕСЃС‚С– SupportedCultures С‚Р° SupportedUICultures.
             app.UseRequestLocalization(requestlocalizationOptions.Value);
 
             app.UseStaticFiles();
