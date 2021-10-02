@@ -31,7 +31,7 @@ namespace Localiz
             //додавання сдужб локалізації в контейнер служб.Додавання шляху до ресурсів.
             services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
 
-            //тесттест
+        
             services.AddSingleton<LocalizationService>();
             //додавання підтримки файлів локалізованих представлень.В цьому прикладі локалізація зразка представлення базується на 
             //суфіксі файла представлення.
@@ -102,7 +102,8 @@ namespace Localiz
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Customer}/{action=Create}/{id?}");
+                    //pattern: "{controller=Customer}/{action=Create}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
