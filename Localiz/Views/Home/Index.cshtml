@@ -4,7 +4,8 @@
     ViewData["Title"] = "Home Page";
 }
 @inject LocalizationService LocalizationService
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">@LocalizationService.GetLocalizedString("Name")</a>.</p>
+    <h1 class="display-4">@LocalizationService.GetLocalizedString("Wellcome")</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">@LocalizationService.GetLocalizedString("Titlee")</a></p>
 </div>

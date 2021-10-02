@@ -126,4 +126,10 @@
   <data name="Position" xml:space="preserve">
     <value>Позици товара</value>
   </data>
+  <data name="Titlee" xml:space="preserve">
+    <value>Вы читаете русский язык</value>
+  </data>
+  <data name="Wellcome" xml:space="preserve">
+    <value>Добро пожаловать</value>
+  </data>
 </root>
