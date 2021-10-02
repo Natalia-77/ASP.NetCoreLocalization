@@ -30,8 +30,8 @@ namespace Localiz
             
             //додавання сдужб локалізації в контейнер служб.Додавання шляху до ресурсів.
             services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
-            //тест
 
+            //тесттест
             services.AddSingleton<LocalizationService>();
             //додавання підтримки файлів локалізованих представлень.В цьому прикладі локалізація зразка представлення базується на 
             //суфіксі файла представлення.
